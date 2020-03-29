@@ -38,15 +38,21 @@ export default {
   justify-content: center;
   align-items: center;
   &__bar {
-    width: 100%;
-    height: 20%;
+    width: 100vw;
+    height: 15vh;
     background-color: rgba( 255, 255, 255, .5); 
   }
   &__option {
     width: 20%;
     height: 100%;
     &__text {
-      font-size: 2.5rem;
+      cursor: pointer;
+      font-size: 1.8rem;
+      &:hover {
+        animation-duration: 3s;
+        animation-fill-mode: both;
+        animation-iteration-count: infinite;
+      }
     }
     &__sign {
       height: 100%;
