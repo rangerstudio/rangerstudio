@@ -2,7 +2,7 @@
   <div id="app">
     <navbar></navbar>
     <home></home>
-    <!-- <footer>{{'test footer'}}</footer> -->
+    <footer>{{'test footer'}}</footer>
   </div>
 </template>
 
@@ -16,6 +16,7 @@ export default {
       
     }
   },
+  mounted() {},
   components: {
     navbar,
     home
@@ -24,15 +25,13 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-  width: 100vw;
-  height: 100vh;
+body {
   font-family: 'Microsoft JhengHei', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background-image: url('./assets/background.jpg');
+  background: url('./assets/background.jpg') no-repeat 100% 100% fixed;
   background-size: 100% 100%;
   overflow-x: hidden;
   overflow-y: scroll;
