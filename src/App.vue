@@ -2,7 +2,7 @@
   <div id="app">
     <navbar></navbar>
     <home></home>
-    <footer>{{'test footer'}}</footer>
+    <!-- <footer>{{'test footer'}}</footer> -->
   </div>
 </template>
 
@@ -34,6 +34,8 @@ export default {
   color: #2c3e50;
   background-image: url('./assets/background.jpg');
   background-size: 100% 100%;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  &::-webkit-scrollbar { display: none; }
 }
 </style>

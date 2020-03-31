@@ -1,11 +1,13 @@
 {
   "about": {
-    "concept": ""
+    "title": "我們的理念",
+    "text": "以木為主\n以金為輔\n以行動實現夢想"
   },
   "protfolio": [
     {
       "name": "",
-      "introduction": ""
+      "introduction": "",
+      "link": ""
     }
   ]
 }

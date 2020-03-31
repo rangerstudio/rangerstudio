@@ -1,5 +1,7 @@
 <template>
-  <nav class="nav nav__bar">
+  <b-navbar
+    class="nav nav__bar"
+    sticky>
     <div class="nav nav__option">
       <span class="nav nav__option__text">{{ 'about' }}</span>
     </div>
@@ -9,7 +11,7 @@
     <div class="nav nav__option">
       <img
         class="nav nav__option__sign"
-        src=""
+        :src="logo"
         alt="木目金心工作室"
       >
     </div>
@@ -19,14 +21,15 @@
     <div class="nav nav__option">
       <span class="nav nav__option__text">{{ 'contact' }}</span>
     </div>
-  </nav>
+  </b-navbar>
 </template>
 
 <script>
+import logo from '../assets/logo.png';
 export default {
   data() {
     return {
-
+      logo
     }
   }
 }
@@ -40,7 +43,8 @@ export default {
   &__bar {
     width: 100vw;
     height: 15vh;
-    background-color: rgba( 255, 255, 255, .5); 
+    position: sticky;
+    background-color: rgba( 255, 255, 255, .3); 
   }
   &__option {
     width: 20%;
