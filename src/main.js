@@ -4,6 +4,7 @@ import App from './App.vue'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap-vue/dist/bootstrap-vue.css"
 import "animate.css"
+import "material-design-icons"
 import AOS from 'aos'
 import "aos/dist/aos.css"
 

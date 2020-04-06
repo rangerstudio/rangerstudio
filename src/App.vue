@@ -2,11 +2,12 @@
   <div id="app">
     <navbar></navbar>
     <home></home>
-    <footer>{{'test footer'}}</footer>
+    <footerbar></footerbar>
   </div>
 </template>
 
 <script>
+import footerbar from './components/footerbar.vue';
 import navbar from './components/navbar.vue';
 import home from './pages/home.vue';
 export default {
@@ -18,6 +19,7 @@ export default {
   },
   mounted() {},
   components: {
+    footerbar,
     navbar,
     home
   }
