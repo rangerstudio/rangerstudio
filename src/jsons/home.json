@@ -3,10 +3,15 @@
     "title": "我們的理念",
     "text": "以木為主\n以金為輔\n以行動實現夢想"
   },
-  "protfolio": [
+  "portfolios": [
     {
-      "name": "",
-      "introduction": "",
+      "title": "我們的理念",
+      "text": "以木為主\n以金為輔\n以行動實現夢想",
+      "link": ""
+    },
+    {
+      "title": "我們的理念2",
+      "text": "以木為主\n以金為輔\n以行動實現夢想",
       "link": ""
     }
   ]

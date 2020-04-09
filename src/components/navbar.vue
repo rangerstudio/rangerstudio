@@ -1,25 +1,21 @@
 <template>
   <b-navbar
-    class="nav nav__bar"
-    sticky>
-    <div class="nav nav__option">
-      <span class="nav nav__option__text">{{ 'about' }}</span>
-    </div>
-    <div class="nav nav__option">
-      <span class="nav nav__option__text">{{ 'news' }}</span>
-    </div>
-    <div class="nav nav__option">
+    :class="`nav nav__bar nav__bar--${navbar.status} animated ${navbar.animate}`"
+    :sticky="navbar.sticky">
+    <div
+      :key="index"
+      v-for="(menu, index) in menus"
+      class="nav nav__option">
       <img
+        v-if="menu.english === 'home'"
         class="nav nav__option__sign"
         :src="logo"
-        alt="木目金心工作室"
+        :alt="menu.chinese"
       >
-    </div>
-    <div class="nav nav__option">
-      <span class="nav nav__option__text">{{ 'portfolio' }}</span>
-    </div>
-    <div class="nav nav__option">
-      <span class="nav nav__option__text">{{ 'contact' }}</span>
+      <strong
+        v-else
+        class="nav nav__option__text"
+      >{{ menu.chinese }}</strong>
     </div>
   </b-navbar>
 </template>
@@ -27,11 +23,37 @@
 <script>
 import logo from '../assets/logo.png';
 export default {
+  name: 'navbar',
+  props: {
+    menus: Array
+  },
   data() {
     return {
-      logo
+      logo,
+      navbar: {
+        animate: "",
+        status: "gauze",
+        sticky: false
+      }
     }
-  }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.changeNavbarStatus);
+  },
+  methods: {
+    changeNavbarStatus() {
+      let vh = (window.innerHeight / 100);
+      if (window.scrollY >= 15 * vh) {
+        this.navbar.animate = "fadeIn";
+        this.navbar.status = "fill";
+        this.navbar.sticky = true;
+      } else {
+        this.navbar.animate = "slideInUp";
+        this.navbar.status = "gauze";
+        this.navbar.sticky = false;
+      }
+    }
+  },
 }
 </script>
 
@@ -43,22 +65,49 @@ export default {
   &__bar {
     width: 100vw;
     height: 15vh;
-    position: sticky;
-    background-color: rgba( 255, 255, 255, .3); 
+    &--fill {
+      background-color: rgba( 255, 255, 255, .8); 
+    }
+    &--gauze {
+      background-color: rgba( 255, 255, 255, .3); 
+    }
   }
   &__option {
     width: 20%;
     height: 100%;
+    position:relative;
     &__text {
       cursor: pointer;
       font-size: 1.8rem;
+      background: linear-gradient(to right, #FFDA71 50%, #2c3e50 50%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200%;
+      background-position: 100%;
+      transition: 1s;
+      &::after {
+        content: "";
+        position: absolute;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        background: linear-gradient(135deg, rgba(#CC9976, .8) 50%, transparent 50%);
+        z-index:-1;
+        background-size: 245%;
+        background-position: 100%;
+        transition: 1.5s;
+      }
       &:hover {
-        animation-duration: 3s;
-        animation-fill-mode: both;
-        animation-iteration-count: infinite;
+        background-position: 0;
+        &::after {
+          background-position: 0;
+        }
       }
     }
     &__sign {
+      cursor: pointer;
       height: 100%;
     }
   }

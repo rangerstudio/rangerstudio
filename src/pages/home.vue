@@ -18,13 +18,23 @@
         />
       </div>
     </div>
-    <div class="home home__content">
+    <div class="home home__gauze home__content">
       <b-carousel
         data-aos="fade-up"
         class="home home__content__picture"
-        :interval="5000"
         controls
-        indicators>
+        indicators
+        @sliding-start="onSlidingStart"
+        @sliding-end="onSlidingEnd">
+        <b-carousel-slide>
+          <template v-slot:img>
+            <img
+              class="home__img"
+              :src="about"
+            >
+          </template>
+          <h1>{{ 'Picture' }}</h1>
+        </b-carousel-slide>
         <b-carousel-slide>
           <template v-slot:img>
             <img
@@ -35,9 +45,15 @@
           <h1>{{ 'Picture' }}</h1>
         </b-carousel-slide>
       </b-carousel>
-      <div class="home__content__introduction">
-        <div>{{ 'Introduction' }}</div>
-        <button>{{ 'more' }}</button>
+      <div class="home home__content__introduction">
+        <strong :class="`home__font animated ${portfolioAnimate}`">
+          <p
+            class="home__font__title"
+            data-aos="fade-up"
+          >{{ portfolio.title }}</p>
+          <p data-aos="fade-up" class="home__font__text">{{ portfolio.text }}</p>
+          <button data-aos="fade-up" class="btn btn-success home__font__button">{{ 'more' }}</button>
+        </strong>
       </div>
     </div>
   </div>
@@ -47,12 +63,31 @@
 import about from '../assets/about.jpg';
 import data from '../jsons/home.json';
 export default {
+  name: 'home',
   data() {
     return {
       about,
-      data
+      data,
+      portfolioAnimate: "",
+      portfolio: {
+        title: "",
+        text: "",
+        link: ""
+      }
     }
-  }
+  },
+  mounted() {
+    this.portfolio = this.data.portfolios[0];
+  },
+  methods: {
+    onSlidingStart(slide) {
+      this.portfolioAnimate = "zoomOut";
+    },
+    onSlidingEnd(slide) {
+      this.portfolioAnimate = "zoomIn";
+      this.portfolio = data.portfolios[slide];
+    }
+  },
 }
 </script>
 
@@ -68,6 +103,9 @@ export default {
   &__font {
     width: 70%;
     text-align: left;
+    &__button {
+      width: 20%;
+    }
     &__title {
       font-size: 3rem;
       font-style: italic;
@@ -79,6 +117,7 @@ export default {
   &__content {
     width: 100vw;
     height: 85vh;
+    padding: 3rem 2rem;
     &__introduction {
       width: 45%;
       height: 100%;

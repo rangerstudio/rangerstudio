@@ -1,44 +1,50 @@
 <template>
-  <footer class="footer footer__bar">
-    <div class="footer footer__bar__external">
-      <a
-        :key="index"
-        v-for="(website, index) in websites"
-        :href="website.link"
-        :title="website.title"
-        target="_blank"
-        @mouseenter="addAnimation(website)"
-        @mouseleave="removeAnimation(website)">
-        <svg
-         :class="`footer__icon animated ${website.animate}`"
-         viewBox="0 0 24 24">
-         <path :d="website.path" />
-        </svg>  
-      </a>
+  <footer class="footer__bg">
+    <div
+      data-aos="fade-in"
+      class="footer footer__bar">
+      <div class="footer footer__bar__external">
+        <a
+          :key="index"
+          v-for="(website, index) in websites"
+          :href="website.link"
+          :title="website.title"
+          target="_blank"
+          @mouseenter="addAnimation(website)"
+          @mouseleave="removeAnimation(website)">
+          <svg
+          :class="`footer__icon animated ${website.animate}`"
+          viewBox="0 0 24 24">
+          <path :d="website.path" />
+          </svg>  
+        </a>
+      </div>
+      <div class="footer footer__bar__internal">
+        <strong
+          :key="index"
+          v-for="(menu, index) in menus">
+          <span v-if="menu.english !== 'home'">
+            <a class="footer__bar__text">{{ `&nbsp;&nbsp;${menu.chinese}&nbsp;&nbsp;` }}</a>
+            <span v-if="index !== menus.length-1">{{ '|&nbsp;' }}</span> 
+          </span>
+        </strong>
+      </div>
+      <div class="footer footer__bar__copyright">
+        <strong>版權所有&nbsp;&copy;&nbsp;木目金心工作室。</strong>
+        <strong>&nbsp;Background&nbsp;created&nbsp;by&nbsp;<a href="https://www.freepik.com/rawpixel-com" target="_blank">rawpixel.com</a></strong>
+      </div>
     </div>
-    <div class="footer footer__bar__internal">
-      <strong
-        :key="index"
-        v-for="(menu, index) in menus">
-        <span class="footer__bar__text">{{ `&nbsp;&nbsp;${menu}&nbsp;&nbsp;` }}</span>  
-        <span v-if="index !== menus.length-1">{{ '|&nbsp;' }}</span> 
-      </strong>
-    </div>
-    <div class="footer footer__bar__copyright">
-      <strong>Copyright © Ranger Studio Inc. All rights reserved</strong>
-    </div>
-    <!-- <strong>關於木目金心</strong>
-    <strong>最新消息</strong>
-    <strong>作品集</strong>
-    <strong>聯絡我們</strong> -->
   </footer>
 </template>
 
 <script>
 export default {
+  name: 'footerbar',
+  props: {
+    menus: Array
+  },
   data() {
     return {
-      menus: ['關於木目金心', '最新消息', '作品集', '聯絡我們'],
       websites: [
         {
           animate: "",
@@ -72,9 +78,14 @@ export default {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  &__bar {
+  &__bg {
     width: 100vw;
     height: 20vh;
+    background-color: rgba( 255, 255, 255, .3); 
+  }
+  &__bar {
+    width: 100%;
+    height: 100%;
     &__copyright {
       width: 90%;
       height: 25%;

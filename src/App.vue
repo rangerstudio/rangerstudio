@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <navbar></navbar>
+    <navbar :menus="menus"></navbar>
     <home></home>
-    <footerbar></footerbar>
+    <footerbar :menus="menus"></footerbar>
   </div>
 </template>
 
@@ -14,7 +14,24 @@ export default {
   name: 'app',
   data () {
     return {
-      
+      menus: [
+        {
+          chinese: "關於木目金心",
+          english: "about"
+        }, {
+          chinese: "最新消息",
+          english: "news"
+        }, {
+          chinese: "木目金心工作室",
+          english: "home"
+        }, {
+          chinese: "作品集",
+          english: "portfolios"
+        }, {
+          chinese: "聯絡我們",
+          english: "contact"
+        }
+      ]
     }
   },
   mounted() {},
