@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <navbar :menus="menus"></navbar>
-    <home></home>
+    <router-view></router-view>
     <footerbar :menus="menus"></footerbar>
   </div>
 </template>
