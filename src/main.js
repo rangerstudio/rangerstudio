@@ -17,6 +17,7 @@ import contact from './pages/contact.vue'
 import home from './pages/home.vue'
 import news from './pages/news.vue'
 import portfolios from './pages/portfolios.vue'
+import noPage from './pages/no-page.vue'
 
 // 2. 定義路由
 // 每個路由應該應設一個組件。 其中"component" 可以是
@@ -28,10 +29,12 @@ const routes = [
   { path: '/contact', name: 'contact', component: contact },
   { path: '/news', name: 'news', component: news },
   { path: '/portfolios', name: 'portfolios', component: portfolios },
+  { path: '*', component: noPage },
 ]
 
 // 3. 創建 router 實例，然后傳 `routes` 配置
 const router = new VueRouter({
+  mode: 'history',
   routes: routes
 })
 

@@ -1,10 +1,10 @@
 <template>
-  <h1>news</h1>
+  <h1>404 - This is not the web page.</h1>
 </template>
 
 <script>
 export default {
-  name: 'news',
+  name: 'no-page',
   data() {
     return {
       

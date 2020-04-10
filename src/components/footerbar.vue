@@ -24,7 +24,10 @@
           :key="index"
           v-for="(menu, index) in menus">
           <span v-if="menu.english !== 'home'">
-            <a class="footer__bar__text">{{ `&nbsp;&nbsp;${menu.chinese}&nbsp;&nbsp;` }}</a>
+            <a
+              class="footer__bar__text"
+              @click="goto(menu.english)"
+            >{{ `&nbsp;&nbsp;${menu.chinese}&nbsp;&nbsp;` }}</a>
             <span v-if="index !== menus.length-1">{{ '|&nbsp;' }}</span> 
           </span>
         </strong>
@@ -62,6 +65,11 @@ export default {
     }
   },
   methods: {
+    goto(pageName) {
+      if(pageName !== this.$route.name) {
+        this.$router.push({ name: pageName });
+      }
+    },
     addAnimation(obj) {
       obj.animate = "rubberBand";
     },

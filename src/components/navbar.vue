@@ -11,10 +11,12 @@
         class="nav nav__option__sign"
         :src="logo"
         :alt="menu.chinese"
+        @click="goto(menu.english)"
       >
       <strong
         v-else
         class="nav nav__option__text"
+        @click="goto(menu.english)"
       >{{ menu.chinese }}</strong>
     </div>
   </b-navbar>
@@ -47,10 +49,15 @@ export default {
         this.navbar.animate = "fadeIn";
         this.navbar.status = "fill";
         this.navbar.sticky = true;
-      } else {
+      } else if(this.navbar.animate === "fadeIn") {
         this.navbar.animate = "slideInUp";
         this.navbar.status = "gauze";
         this.navbar.sticky = false;
+      }
+    },
+    goto(pageName) {
+      if(pageName !== this.$route.name) {
+        this.$router.push({ name: pageName });
       }
     }
   },
