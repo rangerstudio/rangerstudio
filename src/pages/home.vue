@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="home home__gauze home__content">
+    <div class="home home__content">
       <div class="home home__content__introduction">
         <strong class="home__font">
           <p
@@ -18,7 +18,7 @@
         />
       </div>
     </div>
-    <div class="home home__gauze home__content">
+    <div class="home home__content">
       <b-carousel
         data-aos="fade-up"
         class="home home__content__picture"
@@ -97,9 +97,6 @@ export default {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  &__gauze {
-    background-color: rgba($color: white, $alpha: .3);
-  }
   &__font {
     width: 70%;
     text-align: left;

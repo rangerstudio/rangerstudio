@@ -1,6 +1,6 @@
 <template>
   <b-navbar
-    :class="`nav nav__bar nav__bar--${navbar.status} animated ${navbar.animate}`"
+    :class="`nav nav__bar ${navbar.status} animated ${navbar.animate}`"
     :sticky="navbar.sticky">
     <div
       :key="index"
@@ -47,11 +47,11 @@ export default {
       let vh = (window.innerHeight / 100);
       if (window.scrollY >= 15 * vh) {
         this.navbar.animate = "fadeIn";
-        this.navbar.status = "fill";
+        this.navbar.status = "nav__bar--fill";
         this.navbar.sticky = true;
       } else if(this.navbar.animate === "fadeIn") {
         this.navbar.animate = "slideInUp";
-        this.navbar.status = "gauze";
+        this.navbar.status = "";
         this.navbar.sticky = false;
       }
     },
@@ -74,9 +74,6 @@ export default {
     height: 15vh;
     &--fill {
       background-color: rgba( 255, 255, 255, .8); 
-    }
-    &--gauze {
-      background-color: rgba( 255, 255, 255, .3); 
     }
   }
   &__option {

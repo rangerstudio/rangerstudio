@@ -56,4 +56,7 @@ body {
   overflow-y: scroll;
   &::-webkit-scrollbar { display: none; }
 }
+#app {
+  background-color: rgba( 255, 255, 255, .3); 
+}
 </style>

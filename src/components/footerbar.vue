@@ -1,41 +1,39 @@
 <template>
-  <footer class="footer__bg">
-    <div
-      data-aos="fade-in"
-      class="footer footer__bar">
-      <div class="footer footer__bar__external">
-        <a
-          :key="index"
-          v-for="(website, index) in websites"
-          :href="website.link"
-          :title="website.title"
-          target="_blank"
-          @mouseenter="addAnimation(website)"
-          @mouseleave="removeAnimation(website)">
-          <svg
-          :class="`footer__icon animated ${website.animate}`"
-          viewBox="0 0 24 24">
-          <path :d="website.path" />
-          </svg>  
-        </a>
-      </div>
-      <div class="footer footer__bar__internal">
-        <strong
-          :key="index"
-          v-for="(menu, index) in menus">
-          <span v-if="menu.english !== 'home'">
-            <a
-              class="footer__bar__text"
-              @click="goto(menu.english)"
-            >{{ `&nbsp;&nbsp;${menu.chinese}&nbsp;&nbsp;` }}</a>
-            <span v-if="index !== menus.length-1">{{ '|&nbsp;' }}</span> 
-          </span>
-        </strong>
-      </div>
-      <div class="footer footer__bar__copyright">
-        <strong>版權所有&nbsp;&copy;&nbsp;木目金心工作室。</strong>
-        <strong>&nbsp;Background&nbsp;created&nbsp;by&nbsp;<a href="https://www.freepik.com/rawpixel-com" target="_blank">rawpixel.com</a></strong>
-      </div>
+  <footer
+    data-aos="fade-in"
+    class="footer footer__bar">
+    <div class="footer footer__bar__external">
+      <a
+        :key="index"
+        v-for="(website, index) in websites"
+        :href="website.link"
+        :title="website.title"
+        target="_blank"
+        @mouseenter="addAnimation(website)"
+        @mouseleave="removeAnimation(website)">
+        <svg
+        :class="`footer__icon animated ${website.animate}`"
+        viewBox="0 0 24 24">
+        <path :d="website.path" />
+        </svg>  
+      </a>
+    </div>
+    <div class="footer footer__bar__internal">
+      <strong
+        :key="index"
+        v-for="(menu, index) in menus">
+        <span v-if="menu.english !== 'home'">
+          <a
+            class="footer__bar__text"
+            @click="goto(menu.english)"
+          >{{ `&nbsp;&nbsp;${menu.chinese}&nbsp;&nbsp;` }}</a>
+          <span v-if="index !== menus.length-1">{{ '|&nbsp;' }}</span> 
+        </span>
+      </strong>
+    </div>
+    <div class="footer footer__bar__copyright">
+      <strong>版權所有&nbsp;&copy;&nbsp;木目金心工作室。</strong>
+      <strong>&nbsp;Background&nbsp;created&nbsp;by&nbsp;<a href="https://www.freepik.com/rawpixel-com" target="_blank">rawpixel.com</a></strong>
     </div>
   </footer>
 </template>
@@ -86,14 +84,9 @@ export default {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  &__bg {
+  &__bar {
     width: 100vw;
     height: 20vh;
-    background-color: rgba( 255, 255, 255, .3); 
-  }
-  &__bar {
-    width: 100%;
-    height: 100%;
     &__copyright {
       width: 90%;
       height: 25%;
