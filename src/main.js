@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import BootstrapVue from "bootstrap-vue"
 import VueRouter from 'vue-router'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 import App from './App.vue'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap-vue/dist/bootstrap-vue.css"
@@ -10,6 +12,7 @@ import AOS from 'aos'
 import "aos/dist/aos.css"
 
 Vue.use(BootstrapVue)
+Vue.use(VueAxios, axios)
 Vue.use(VueRouter)
 
 import about from './pages/about.vue'
@@ -35,7 +38,10 @@ const routes = [
 // 3. 創建 router 實例，然后傳 `routes` 配置
 const router = new VueRouter({
   mode: 'history',
-  routes: routes
+  routes: routes,
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })
 
 new Vue({
